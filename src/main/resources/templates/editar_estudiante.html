@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar estudiante</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="#">Control de estudiantes</a>
+		
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+				<a class="nav-link" th:href="@{/usuarios}">Control de estudiantes</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
+	<br>
+	<section class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Edicion de estudiantes</h1>
+				<div class="card-body">
+					<form th:action="@{'/usuarios/' + ${persona.id}}" th:object="${persona}" method="post">
+						<div class="form-group">
+							<label>Nombre: </label>
+							<input type="text" name="nomUsuario" th:field="*{nomUsuario}" class="form-control" placeholder="digite su nombre:" required>
+						</div>
+						<br>
+						<div class="form-group">
+							<label>Apellido Materno: </label>
+							<input type="text" name="apPaterno" th:field="*{apPaterno}" class="form-control" placeholder="digite su apellido Paterno:" required>
+						</div>
+						<br>
+						<div class="form-group">
+							<label>Apellido Paterno: </label>
+							<input type="text" name="apMaterno" th:field="*{apMaterno}" class="form-control" placeholder="digite su apellido materno:" required>
+						</div>
+						<br>
+						<div class="box-footer">
+							<input type="hidden" name="_method" value="PATCH">
+   							 <button class="btn btn-success" type="submit">Guardar</button>
+						</div>
+					</form>			
+				</div>
+			</div>
+		</div>
+	</section>
+	
+</body>
+</html>
